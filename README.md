@@ -2,7 +2,7 @@
 
 ## A collection of small tweaks to improve the overall game experience
 
-Features:
+### Features:
 - Uses a modular system with each module able to be turned on or off on the fly, and have their available settings changed
 - Custom settings UI available from the default mod settings (M key mod list > Find TLDPlus > Settings)
 
