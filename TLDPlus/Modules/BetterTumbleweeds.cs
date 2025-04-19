@@ -22,12 +22,24 @@ namespace TLDPlus.Modules
 			S = this;
 			if (itemdatabase.d.gthumbleweed.GetComponent<TumbleweedHelper>() == null)
 				itemdatabase.d.gthumbleweed.AddComponent<TumbleweedHelper>().Module = this;
+
+			foreach (thumbleweedScript existing in GameObject.FindObjectsOfType<thumbleweedScript>())
+			{
+				if (existing.gameObject.GetComponent<TumbleweedHelper>() == null)
+					existing.gameObject.AddComponent<TumbleweedHelper>().Module = this;
+			}
 		}
 
 		public override void OnDisable() 
 		{
 			if (itemdatabase.d.gthumbleweed.GetComponent<TumbleweedHelper>() != null)
 				GameObject.Destroy(itemdatabase.d.gthumbleweed.GetComponent<TumbleweedHelper>());
+
+			foreach (thumbleweedScript existing in GameObject.FindObjectsOfType<thumbleweedScript>())
+			{
+				if (existing.gameObject.GetComponent<TumbleweedHelper>() != null)
+					GameObject.Destroy(existing.gameObject.GetComponent<TumbleweedHelper>());
+			}
 		}
 
 		public override void Update()
