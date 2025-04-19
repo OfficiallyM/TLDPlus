@@ -8,6 +8,7 @@ namespace TLDPlus.Core
 	[KnownType(typeof(BetterTankCaps))]
 	[KnownType(typeof(HoldToShit))]
 	[KnownType(typeof(BetterTumbleweeds))]
+	[KnownType(typeof(MaxVehicleSpeed))]
 	[DataContract]
 	internal abstract class Module
 	{

@@ -77,6 +77,7 @@ namespace TLDPlus.Utility
 				new BetterTankCaps(),
 				new HoldToShit(),
 				new BetterTumbleweeds(),
+				new MaxVehicleSpeed(),
 			};
 		}
 
@@ -88,6 +89,7 @@ namespace TLDPlus.Utility
 					typeof(BetterTankCaps),
 					typeof(HoldToShit),
 					typeof(BetterTumbleweeds),
+					typeof(MaxVehicleSpeed),
 				}
 			};
 		}
