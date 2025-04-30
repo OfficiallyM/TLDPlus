@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Reflection;
 using TLDLoader;
 using TLDPlus.Utility;
 using UnityEngine;
-using Logger = TLDPlus.Utility.Logger;
 using Module = TLDPlus.Core.Module;
 
 namespace TLDPlus
@@ -14,8 +14,9 @@ namespace TLDPlus
 		public override string ID => "M_TLDPlus";
 		public override string Name => "TLDPlus";
 		public override string Author => "M-";
-		public override string Version => "1.0.0";
+		public override string Version => "1.1.0";
 		public override bool LoadInMenu => true;
+		public override bool UseLogger => true;
 
 		internal static TLDPlus Mod;
 
@@ -26,7 +27,7 @@ namespace TLDPlus
 		private bool _loaded = false;
 		private Vector2 _scrollPosition = Vector2.zero;
 
-		private SettingsView _settingsView;
+		private ModList _modList;
 
 		public int screenWidth;
 		public int screenHeight;
@@ -34,8 +35,6 @@ namespace TLDPlus
 		public TLDPlus()
 		{
 			Mod = this;
-
-			Logger.Init();
 		}
 
 		public override void Config()
@@ -47,7 +46,6 @@ namespace TLDPlus
 				if (GUI.Button(new Rect(10, 10, 200, 20), "Toggle module settings"))
 				{
 					_showUI = !_showUI;
-					_settingsView.selectedMod = null;
 				}
 			}
 
@@ -58,7 +56,9 @@ namespace TLDPlus
 		public override void OnMenuLoad()
 		{
 			_loaded = false;
-			_settingsView = GameObject.FindObjectOfType<SettingsView>();
+			_modList = GameObject.FindObjectOfType<ModList>();
+
+			Logger.Log(_modList == null ? "_modList null" : $"_modList: {_modList.name}");
 		}
 
 		public override void OnLoad()
@@ -131,8 +131,9 @@ namespace TLDPlus
 
 		private bool IsSettingsOpen()
 		{
-			FieldInfo visibleField = _settingsView.GetType().GetField("visible", BindingFlags.NonPublic | BindingFlags.Instance);
-			return (bool)visibleField.GetValue(_settingsView);
+			var visible = _modList.GetType().GetField("visible", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+			var selected = _modList.GetType().GetField("selectedMod", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+			return (bool)visible.GetValue(_modList) || selected.GetValue(_modList) != null;
 		}
 	}
 }

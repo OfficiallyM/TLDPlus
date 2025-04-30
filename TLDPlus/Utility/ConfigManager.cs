@@ -34,7 +34,7 @@ namespace TLDPlus.Utility
 				}
 				catch
 				{
-					Logger.Log("Failed to load TLDPlus config, reverting to defaults.", Logger.LogLevel.Warning);
+					TLDPlus.Mod.Logger.Log("Failed to load TLDPlus config, reverting to defaults.", Logger.LogLevel.Warning);
 					return CreateDefaultModules();
 				}
 			}
@@ -46,7 +46,7 @@ namespace TLDPlus.Utility
 				bool exists = loadedModules.Any(m => m.Name == defaultModule.Name);
 				if (!exists)
 				{
-					Logger.Log($"New module '{defaultModule.Name}' detected.", Logger.LogLevel.Info);
+					TLDPlus.Mod.Logger.Log($"New module '{defaultModule.Name}' detected.", Logger.LogLevel.Info);
 					loadedModules.Add(defaultModule);
 				}
 			}

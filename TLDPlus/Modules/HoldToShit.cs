@@ -1,7 +1,6 @@
 ﻿using System.Runtime.Serialization;
 using TLDPlus.Core;
 using UnityEngine;
-using Logger = TLDPlus.Utility.Logger;
 
 namespace TLDPlus.Modules
 {

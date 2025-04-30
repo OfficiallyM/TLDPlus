@@ -1,7 +1,6 @@
 ﻿using System.Runtime.Serialization;
 using TLDPlus.Core;
 using UnityEngine;
-using Logger = TLDPlus.Utility.Logger;
 
 namespace TLDPlus.Modules
 {
@@ -92,11 +91,11 @@ namespace TLDPlus.Modules
 
 			Module.IncrementCount();
 
-			Logger.Log($"Tumbleweed spawned, count {Module.GetCount()}/{Module.tumbleweedMax}", Logger.LogLevel.Debug);
+			TLDPlus.Mod.Logger.Log($"Tumbleweed spawned, count {Module.GetCount()}/{Module.tumbleweedMax}", TLDLoader.Logger.LogLevel.Debug);
 
 			if (Module.GetCount() > Module.tumbleweedMax)
 			{
-				Logger.Log($"Destroyed spawned tumble weed above max count of {Module.tumbleweedMax}", Logger.LogLevel.Debug);
+				TLDPlus.Mod.Logger.Log($"Destroyed spawned tumble weed above max count of {Module.tumbleweedMax}", TLDLoader.Logger.LogLevel.Debug);
 				GameObject.Destroy(this.gameObject);
 			}
 		}
