@@ -57,8 +57,6 @@ namespace TLDPlus
 		{
 			_loaded = false;
 			_modList = GameObject.FindObjectOfType<ModList>();
-
-			Logger.Log(_modList == null ? "_modList null" : $"_modList: {_modList.name}");
 		}
 
 		public override void OnLoad()
