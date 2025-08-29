@@ -20,8 +20,6 @@ namespace TLDPlus
 
 		internal static TLDPlus Mod;
 
-		internal static bool debug = false;
-
 		private List<Module> _modules;
 		private bool _showUI = false;
 		private bool _loaded = false;
@@ -41,16 +39,10 @@ namespace TLDPlus
 		{
 			SettingAPI setting = new SettingAPI(this);
 
-			if (_loaded)
+			if (_loaded && GUI.Button(new Rect(10, 10, 200, 20), "Toggle module settings"))
 			{
-				if (GUI.Button(new Rect(10, 10, 200, 20), "Toggle module settings"))
-				{
-					_showUI = !_showUI;
-				}
+				_showUI = !_showUI;
 			}
-
-			// Debug stuff.
-			debug = setting.GUICheckbox(debug, "Debug mode", 10, _loaded ? 40 : 10);
 		}
 
 		public override void OnMenuLoad()
