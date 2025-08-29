@@ -91,11 +91,8 @@ namespace TLDPlus.Modules
 
 			Module.IncrementCount();
 
-			TLDPlus.Mod.Logger.Log($"Tumbleweed spawned, count {Module.GetCount()}/{Module.tumbleweedMax}", TLDLoader.Logger.LogLevel.Debug);
-
 			if (Module.GetCount() > Module.tumbleweedMax)
 			{
-				TLDPlus.Mod.Logger.Log($"Destroyed spawned tumble weed above max count of {Module.tumbleweedMax}", TLDLoader.Logger.LogLevel.Debug);
 				GameObject.Destroy(this.gameObject);
 			}
 		}

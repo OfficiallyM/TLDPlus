@@ -13,6 +13,7 @@ namespace TLDPlus.Modules
 		public override void Update()
 		{
 			if (!Enabled) return;
+			if (mainscript.M?.player == null) return;
 
 			RaycastHit hitInfo1;
 			if (Physics.Raycast(mainscript.M.player.Cam.transform.position, mainscript.M.player.Cam.transform.forward, out hitInfo1, mainscript.M.player.FrayRange, (int)mainscript.M.player.useLayer))

@@ -14,7 +14,7 @@ namespace TLDPlus
 		public override string ID => "M_TLDPlus";
 		public override string Name => "TLDPlus";
 		public override string Author => "M-";
-		public override string Version => "1.1.0";
+		public override string Version => "1.1.1";
 		public override bool LoadInMenu => true;
 		public override bool UseLogger => true;
 
